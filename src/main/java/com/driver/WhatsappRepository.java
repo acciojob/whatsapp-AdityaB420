@@ -30,7 +30,7 @@ public class WhatsappRepository {
     public String createUser(String name, String mobile) throws Exception {
         if(userMobile.contains(mobile))
         {
-            throw new Exception("User already exists with this mobile number!");
+            throw new Exception("User already exists");
         }
         User user=new User(name,mobile);
         userMobile.add(mobile);
@@ -63,11 +63,11 @@ public class WhatsappRepository {
 
         if(!groupUsersMap.containsKey(group))
         {
-            throw new Exception("Group does not exist!");
+            throw new Exception("Group does not exist");
         }
         if(!groupUsersMap.get(group).contains(sender))
         {
-            throw new Exception("You're not allowed to send message in the group!");
+            throw new Exception("You are not allowed to send message");
         }
         senderMap.put(message, sender);
         List<Message>ml=groupMessageMap.get(group);
@@ -80,15 +80,15 @@ public class WhatsappRepository {
 
         if(!groupUsersMap.containsKey(group))
         {
-            throw new Exception("Group does not exist!");
+            throw new Exception("Group does not exist");
         }
         if(!approver.equals(adminMap.get(group)))
         {
-            throw new Exception("Approver does not have admin rights! ");
+            throw new Exception("Approver does not have rights");
         }
         if(!groupUsersMap.get(group).contains(user))
         {
-            throw new Exception("User is not a participant! ");
+            throw new Exception("User is not a participant");
         }
         adminMap.put(group,user);
 
